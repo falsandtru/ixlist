@@ -53,11 +53,11 @@ export class IxList<K, V = undefined> {
   push(key: K, value: V): number;
   // O(1)
   pop(): { readonly key: K; readonly value: V; } | undefined;
-  // O(log n)
+  // O(log n) or O(1)
   find(key: K, index?: number): V | undefined;
-  // O(log n)
+  // O(log n) or O(1)
   findIndex(key: K, index?: number): number | undefined;
-  // O(log n)
+  // O(log n) or O(1)
   has(key: K, index?: number): boolean;
   // O(n)
   [Symbol.iterator](): Iterator<[K, V], undefined, undefined>;
