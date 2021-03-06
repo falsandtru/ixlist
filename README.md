@@ -24,6 +24,8 @@ export class IxList<K, V = undefined> {
   // O(1)
   readonly head: { readonly index: number; readonly key: K; readonly value: V; } | undefined;
   // O(1)
+  readonly tail: { readonly index: number; readonly key: K; readonly value: V; } | undefined;
+  // O(1)
   readonly last: { readonly index: number; readonly key: K; readonly value: V; } | undefined;
   // O(1)
   node(index: number): { readonly index: number; readonly key: K; readonly value: V; };
