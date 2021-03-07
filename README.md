@@ -4,6 +4,12 @@
 
 A fast and efficient list data structure.
 
+## Maintenance
+
+This repository is maintained on the following source repository.
+
+https://github.com/falsandtru/spica
+
 ## API
 
 ```ts
