@@ -14,45 +14,45 @@ https://github.com/falsandtru/spica
 
 ### Benchmark
 
-Faster x2-5 of [yallist](https://www.npmjs.com/package/yallist).
+Faster x2 of [yallist](https://www.npmjs.com/package/yallist).
 
 ```
-'Yalist new x 16,541,264 ops/sec ±1.70% (54 runs sampled)'
+'Yalist new x 22,298,894 ops/sec ±2.75% (62 runs sampled)'
 
-'IxList new x 28,043,653 ops/sec ±1.53% (64 runs sampled)'
+'IxList new x 44,853,584 ops/sec ±2.37% (63 runs sampled)'
 
-'Yalist add 10 x 6,501,687 ops/sec ±12.62% (24 runs sampled)'
+'Yalist add 10 x 27,473,811 ops/sec ±10.74% (58 runs sampled)'
 
-'IxList add 10 x 31,447,047 ops/sec ±2.56% (45 runs sampled)'
+'IxList add 10 x 47,765,168 ops/sec ±2.32% (62 runs sampled)'
 
-'Yalist add 100 x 18,787,539 ops/sec ±1.25% (59 runs sampled)'
+'Yalist add 100 x 28,873,223 ops/sec ±4.44% (61 runs sampled)'
 
-'IxList add 100 x 29,422,344 ops/sec ±1.55% (60 runs sampled)'
+'IxList add 100 x 45,206,293 ops/sec ±5.30% (59 runs sampled)'
 
-'Yalist add 1,000 x 19,172,967 ops/sec ±1.54% (60 runs sampled)'
+'Yalist add 1,000 x 28,487,117 ops/sec ±4.64% (61 runs sampled)'
 
-'IxList add 1,000 x 29,979,083 ops/sec ±1.78% (57 runs sampled)'
+'IxList add 1,000 x 46,283,535 ops/sec ±2.49% (61 runs sampled)'
 
-'Yalist add 10,000 x 18,344,963 ops/sec ±0.94% (63 runs sampled)'
+'Yalist add 10,000 x 28,555,076 ops/sec ±3.83% (64 runs sampled)'
 
-'IxList add 10,000 x 30,199,144 ops/sec ±1.63% (58 runs sampled)'
+'IxList add 10,000 x 43,043,662 ops/sec ±5.48% (56 runs sampled)'
 
-'Yalist add 100,000 x 13,941,270 ops/sec ±1.17% (64 runs sampled)'
+'Yalist add 100,000 x 20,781,065 ops/sec ±2.76% (61 runs sampled)'
 
-'IxList add 100,000 x 30,330,602 ops/sec ±1.33% (64 runs sampled)'
+'IxList add 100,000 x 46,246,507 ops/sec ±2.26% (62 runs sampled)'
 
-'IxList put 10 x 20,324,622 ops/sec ±1.52% (58 runs sampled)'
+'IxList put 10 x 28,829,220 ops/sec ±3.33% (63 runs sampled)'
 
-'IxList put 100 x 19,432,778 ops/sec ±1.54% (61 runs sampled)'
+'IxList put 100 x 26,026,698 ops/sec ±3.23% (62 runs sampled)'
 
-'IxList put 1,000 x 16,277,501 ops/sec ±1.41% (58 runs sampled)'
+'IxList put 1,000 x 23,621,272 ops/sec ±3.03% (63 runs sampled)'
 
-'IxList put 10,000 x 16,437,027 ops/sec ±1.08% (62 runs sampled)'
+'IxList put 10,000 x 23,652,364 ops/sec ±3.24% (63 runs sampled)'
 
-'IxList put 100,000 x 12,575,464 ops/sec ±1.14% (63 runs sampled)'
+'IxList put 100,000 x 17,712,322 ops/sec ±1.72% (66 runs sampled)'
 ```
 
-https://github.com/falsandtru/spica/runs/2061836649
+https://github.com/falsandtru/spica/runs/2069026253
 
 ## API
 
@@ -90,7 +90,7 @@ export class IxList<K, V = undefined> {
   // O(1)
   add(this: IxList<K, undefined>, key: K, value?: V): number;
   add(key: K, value: V): number;
-  // O(log n) or O(1)
+  // O(1) or O(log n)
   put(this: IxList<K, undefined>, key: K, value?: V, index?: number): number;
   put(key: K, value: V, index?: number): number;
   set(this: IxList<K, undefined>, key: K, value?: V, index?: number): this;
@@ -101,18 +101,18 @@ export class IxList<K, V = undefined> {
   del(key: K, index?: number): ReadonlyNode<K, V> | undefined;
   delete(key: K, index?: number): boolean;
   // O(1)
+  insert(key: K, value: V, before: number): number;
   unshift(this: IxList<K, undefined>, key: K, value?: V): number;
   unshift(key: K, value: V): number;
   shift(): ReadonlyNode<K, V> | undefined;
   push(this: IxList<K, undefined>, key: K, value?: V): number;
   push(key: K, value: V): number;
   pop(): ReadonlyNode<K, V> | undefined;
-  // O(n)
-  [Symbol.iterator](): Iterator<[K, V], undefined, undefined>;
-  // O(1)
-  insert(index: number, before: number): boolean;
+  move(index: number, before: number): boolean;
   moveToHead(index: number): boolean;
   moveToPrev(index: number): boolean;
   swap(index1: number, index2: number): boolean;
+  // O(n)
+  [Symbol.iterator](): Iterator<[K, V], undefined, undefined>;
 }
 ```
