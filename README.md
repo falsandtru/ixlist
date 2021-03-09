@@ -12,7 +12,7 @@ https://github.com/falsandtru/spica
 
 ## Performance comparison
 
-### Benchmark (ops/sec)
+### Benchmark
 
 Faster x2-5 of [yallist](https://www.npmjs.com/package/yallist).
 
