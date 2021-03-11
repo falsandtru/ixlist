@@ -1,6 +1,6 @@
 {
   "name": "ixlist",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A fast and efficient list data structure.",
   "private": true,
   "homepage": "https://github.com/falsandtru/ixlist",
