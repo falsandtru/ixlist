@@ -1,16 +1,16 @@
-import { IxList, MultiMap } from '../../index';
+import { List, MultiMap } from '../../index';
 
 describe('Interface: Package', function () {
   describe('global', function () {
     it('global', function () {
-      assert(global['IxList'] !== IxList);
+      assert(global['List'] !== List);
       assert(global['MultiMap'] !== MultiMap);
     });
   });
 
-  describe('IxList', function () {
-    it('IxList', function () {
-      assert(typeof IxList === 'function');
+  describe('List', function () {
+    it('List', function () {
+      assert(typeof List === 'function');
     });
   });
 
